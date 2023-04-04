@@ -1,0 +1,62 @@
+CREATE TABLE person (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    isJoestar TEXT);
+    
+CREATE table stand (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    person_id INTEGER,
+    standname TEXT);
+
+INSERT INTO person (name, isJoestar) VALUES
+("Joseph", "Yes");
+INSERT INTO person (name, isJoestar) VALUES
+("Jotaro", "Yes");
+INSERT INTO person (name, isJoestar) VALUES
+("Avdol", "No");
+INSERT INTO person (name, isJoestar) VALUES
+("Kakyoin", "No");
+INSERT INTO person (name, isJoestar) VALUES
+("Polnareff", "No");
+INSERT INTO person (name, isJoestar) VALUES
+("Iggy", "No");
+INSERT INTO person (name, isJoestar) VALUES
+("Josuke", "Yes");
+INSERT INTO person (name, isJoestar) VALUES
+("Joylne", "Yes");
+
+INSERT INTO stand (person_id, standname) 
+VALUES(1, "Hermit Purple");
+INSERT INTO stand (person_id, standname)
+VALUES(2,"Star Platinum");
+INSERT INTO stand (person_id, standname)
+VALUES(3,"Magician's Red");
+INSERT INTO stand (person_id, standname)
+VALUES(4, "Hierophant Green");
+INSERT INTO stand (person_id, standname)
+VALUES(5,"Chariot Requiem");
+INSERT INTO stand (person_id, standname)
+VALUES(6,"The Fool");
+INSERT INTO stand (person_id, standname)
+VALUES(7,"Crazy Diamond");
+INSERT INTO stand (person_id, standname)
+VALUES(8,"Stone Free");
+
+CREATE table bloodline (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    person1_id INTEGER,
+    person2_id INTEGER);
+
+INSERT INTO bloodline (person1_id, person2_id) VALUES (1,2);
+INSERT INTO bloodline (person1_id, person2_id) VALUES (1,7);
+INSERT INTO bloodline (person1_id, person2_id) VALUES (2,8);
+
+SELECT a.name AS Name, b.name AS Descandant FROM bloodline
+JOIN person a
+ON bloodline.person1_id = a.id
+JOIN person b
+ON bloodline.person2_id = b.id;
+
+SELECT person.name, standname FROM stand
+JOIN person
+ON stand.person_id = person.id;
